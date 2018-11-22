@@ -1,0 +1,5 @@
+{
+  "DatabaseConfiguration": {
+    "TestDatabaseConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BookShelf;Integrated Security=True;Connect Timeout=600;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  }
+}

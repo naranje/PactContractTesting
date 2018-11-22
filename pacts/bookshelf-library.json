@@ -1,0 +1,73 @@
+{
+  "consumer": {
+    "name": "Bookshelf"
+  },
+  "provider": {
+    "name": "Library"
+  },
+  "interactions": [
+    {
+      "description": "A GET request for book information",
+      "providerState": "An existing book",
+      "request": {
+        "method": "get",
+        "path": "/library/9"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "id": 9,
+          "title": "Estimating Software Costs (Software Development Series)"
+        }
+      }
+    },
+    {
+      "description": "A GET request for book information with an invalid book id",
+      "providerState": "A book does not exist",
+      "request": {
+        "method": "get",
+        "path": "/library/9"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+        }
+      }
+    },
+    {
+      "description": "A GET request for a list of books",
+      "request": {
+        "method": "get",
+        "path": "/library"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": [
+          {
+            "id": 1,
+            "title": "Code Complete (Microsoft Programming)"
+          },
+          {
+            "id": 2,
+            "title": "The IT Consultant : A Commonsense Framework for Managing the Client Relationship"
+          },
+          {
+            "id": 3,
+            "title": "Object Oriented Perl: A Comprehensive Guide to Concepts and Programming Techniques"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

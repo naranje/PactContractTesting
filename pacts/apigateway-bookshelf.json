@@ -1,0 +1,78 @@
+{
+  "consumer": {
+    "name": "ApiGateway"
+  },
+  "provider": {
+    "name": "Bookshelf"
+  },
+  "interactions": [
+    {
+      "description": "A POST request for a User's bookshelf",
+      "providerState": "A User Bookshelf With 1 Book",
+      "request": {
+        "method": "post",
+        "path": "/bookshelf/1",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "BookLibraryId": 1,
+            "Title": null
+          },
+          {
+            "BookLibraryId": 2,
+            "Title": null
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "userId": 1,
+          "items": [
+            {
+              "bookLibraryId": 1,
+              "title": "Code Complete (Microsoft Programming)"
+            },
+            {
+              "bookLibraryId": 2,
+              "title": "Estimating Software Costs (Software Development Series)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "description": "A GET request for a User's bookshelf",
+      "providerState": "A User Bookshelf With 1 Book",
+      "request": {
+        "method": "get",
+        "path": "/bookshelf/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "body": {
+          "userId": 1,
+          "items": [
+            {
+              "bookLibraryId": 1,
+              "title": "Code Complete (Microsoft Programming)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
