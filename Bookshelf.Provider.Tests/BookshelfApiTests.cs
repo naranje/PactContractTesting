@@ -23,9 +23,9 @@ namespace Bookshelf.Provider.Tests
         public void ShouldVerifyContract()
         {
             //Arrange
-            _verifier.ProvideState("A User Bookshelf does not exist", _bookshelfState.RemoveAllBookshelves);
-            _verifier.ProvideState("A User Bookshelf With 1 Book", _bookshelfState.CreateUserBookshelfOneBook);
-            _verifier.ProvideState("A User Bookshelf With 2 Books", _bookshelfState.CreateUserBookshelfTwoBooks);
+            _verifier.AssignProviderStateCallback("A User Bookshelf does not exist", _bookshelfState.RemoveAllBookshelves);
+            _verifier.AssignProviderStateCallback("A User Bookshelf With 1 Book", _bookshelfState.CreateUserBookshelfOneBook);
+            _verifier.AssignProviderStateCallback("A User Bookshelf With 2 Books", _bookshelfState.CreateUserBookshelfTwoBooks);
             //Act
             _verifier.Initialize("http://localhost:5200");
             //Assert

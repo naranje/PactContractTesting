@@ -56,6 +56,8 @@ namespace ContractTesting
                 // This will save the pact file once finished.
                 PactBuilder.Build();
                 var pactPublisher = new PactPublisher("http://localhost");
+
+                //You would not be hardcoding the version here, but rather providing it through configuration
                 pactPublisher.PublishToBroker(Path.Combine(_contractDirectory, $"{_consumer.ToLower()}-{_provider.ToLower()}.json"), "1.0.0", new[] { "master" });
             }
 

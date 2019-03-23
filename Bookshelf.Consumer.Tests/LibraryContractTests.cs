@@ -26,6 +26,7 @@ namespace Bookshelf.Consumer.Tests
         [Fact]
         public void ShouldGetBooks()
         {
+            //Arrange
             _mockLibraryService
                 //This is essentially the name of this test.  If this test fails on the provider side, this is how 
                 //the provider will be able to tell what the consumer is trying to do.
@@ -64,14 +65,15 @@ namespace Bookshelf.Consumer.Tests
                     }
                 });
 
+            //The Bookshelf Service uses the ServiceDependencies to get the URLs of downstream services. 
+            //Here we mock out the URL of the Library service with our mock Pact server URL
             var serviceDependenciesMock = new Mock<IOptions<ServiceDependencies>>();
-            serviceDependenciesMock.Setup(options => options.Value)
-                .Returns(new ServiceDependencies() { LibraryService = _mockLibraryServiceBaseUri });
+            serviceDependenciesMock.Setup(options => options.Value).Returns(new ServiceDependencies() { LibraryService = _mockLibraryServiceBaseUri });
 
             //Act
             var result = new LibraryClient(serviceDependenciesMock.Object).GetAvailableBooks().ToList();
 
-            // Assert
+            //Assert
             //Although we check for specific values here, to make these tests less fragile the recommended approach would be to
             //check for the structure of the responses rather than the exact values.  For example, we can assert that the
             //Id is a valid guid and that the Title is not blank.

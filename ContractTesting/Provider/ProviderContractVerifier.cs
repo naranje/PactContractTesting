@@ -46,7 +46,7 @@ namespace ContractTesting
             _webHost.Start();
         }
 
-        public void ProvideState(string name, Action setup)
+        public void AssignProviderStateCallback(string name, Action setup)
         {
             _providerStates.Add(name,setup);
         }
